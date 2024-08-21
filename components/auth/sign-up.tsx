@@ -3,7 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { signIn } from "@/next-auth";
 import { Button } from "@/components/ui/button";
 
-export const SignIn = () => {
+export const SignUp = () => {
   return (
     <div className="p-4 bg-muted rounded-xl">
       <form action={async () => {
