@@ -13,13 +13,14 @@ export async function POST(req: Request) {
   const headerPayload = headers();
   const authorization = headerPayload.get("Authorization");
 
-  console.log(req.url);
   if (!authorization) {
-    return new Response("No authorization header", { status: 400 });
+    return new Response("Error occured -- no authorization headers", {
+      status: 400,
+    });
   }
 
-  const event = await receiver.receive(body, authorization);
-
+  const event = receiver.receive(body, authorization);
+  console.log(event);
   if (event.event === "ingress_started") {
     await db.stream.update({
       where: {
@@ -41,4 +42,6 @@ export async function POST(req: Request) {
       },
     });
   }
+
+  return new Response("Success!", { status: 200 });
 }

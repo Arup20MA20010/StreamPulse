@@ -37,7 +37,7 @@ export const createViewerToken = async (hostIdentity: string) => {
     process.env.LIVEKIT_API_SECRET!,
     {
       identity: isHost ? `host-${self.id}` : self.id,
-      name: self?.username || undefined,
+      name: self.username!,
     }
   );
 
@@ -47,6 +47,8 @@ export const createViewerToken = async (hostIdentity: string) => {
     canPublish: false,
     canPublishData: true,
   });
+
+  console.log(token);
 
   return await Promise.resolve(token.toJwt());
 };
