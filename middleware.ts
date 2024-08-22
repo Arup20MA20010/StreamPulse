@@ -11,8 +11,6 @@ const authPaths = [
 
 export default middleware((req) => {
   if (authPaths.includes(req.nextUrl.pathname)) {
-    console.log(req.auth);
-    console.log(req.url);
     if (req.auth) {
       const redirectUrl = new URL("/", req.url);
       return Response.redirect(redirectUrl);

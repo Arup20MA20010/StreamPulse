@@ -48,7 +48,6 @@ export const createViewerToken = async (hostIdentity: string) => {
     canPublishData: true,
   });
 
-  console.log(token);
 
   return await Promise.resolve(token.toJwt());
 };
